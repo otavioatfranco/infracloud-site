@@ -41,13 +41,28 @@
       shift.style.setProperty("--p", p.toFixed(3));
     }
   }
+  // parallax suave nas fotos
+  var px = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function parallax() {
+    if (reduce) return;
+    var vh = window.innerHeight;
+    px.forEach(function (el) {
+      var r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      var off = (r.top + r.height / 2 - vh / 2) * parseFloat(el.getAttribute("data-parallax"));
+      el.style.transform = "translate3d(0," + off.toFixed(1) + "px,0)";
+    });
+  }
+  var _onScroll = onScroll;
+  onScroll = function () { _onScroll(); parallax(); };
   function requestTick() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }
   onScroll();
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", requestTick);
 
   // Elementos aparecem suavemente ao entrar na tela
-  var targets = document.querySelectorAll(".sec__head, .tabs, .svc li, .steps li, .why dl > div, .tech ul, .faq details, .cta__in, .facts p");
+  var targets = document.querySelectorAll(".people__text, .band__quote, .sec__head, .tabs, .svc li, .steps li, .why dl > div, .tech ul, .faq details, .cta__in, .facts p");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
