@@ -41,10 +41,11 @@ jobs:
           D: ${{ secrets.FTP_DIR }}
         run: |
           echo "::notice::FTP_DIR tem ${#D} caracteres; com espaço: $([[ "$D" =~ [[:space:]] ]] && echo sim || echo não); começa com /: $([[ "$D" == /* ]] && echo sim || echo não)"
-          root=$(curl -s -4 --max-time 30 --list-only --user "$U:$P" "ftp://$H/" | tr '\r\n' '  ')
-          echo "::notice::Raiz do FTP: $root"
-          www=$(curl -s -4 --max-time 30 --list-only --user "$U:$P" "ftp://$H/www/" | tr '\r\n' '  ')
-          echo "::notice::Dentro de www/: $www"
+          for path in "" "www/"; do
+            out=$(curl -sS -4 --max-time 30 --list-only --user "$U:$P" "ftp://$H/$path" 2>&1); rc=$?
+            echo "::notice::LIST [${path:-raiz}] rc=$rc :: $(echo "$out" | tr '\r\n' '  ' | sed 's/www/W-W-W/g' | head -c 600)"
+          done
+          out=$(curl -sS -4 --max-time 30 --user "$U:$P" "ftp://$H/" -Q "PWD" --list-only -v 2>&1 | grep -E '^< 2(30|57)|^< 5' | tr '\r\n' '  '); echo "::notice::Servidor: $out"
 
       - name: Enviar arquivos por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
