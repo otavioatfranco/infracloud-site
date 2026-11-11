@@ -73,7 +73,7 @@
   window.addEventListener("resize", requestTick);
 
   // Elementos aparecem suavemente ao entrar na tela
-  var targets = document.querySelectorAll(".people__text, .band__quote, .sec__head, .tabs, .svc li, .steps li, .why dl > div, .tech ul, .faq details, .cta__in, .facts p");
+  var targets = document.querySelectorAll(".fw__text, .fw__feats li, .people__text, .band__quote, .sec__head, .tabs, .svc li, .steps li, .why dl > div, .tech ul, .faq details, .cta__in, .facts p");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
@@ -132,6 +132,16 @@
       cell.classList.toggle("is-up", v > base * 1.25);
     });
   }, 1800);
+
+  // contadores do painel de firewall sobem aos poucos
+  var nums = document.querySelectorAll(".fw__num");
+  setInterval(function () {
+    nums.forEach(function (n) {
+      var v = +n.getAttribute("data-count") + (Math.random() < 0.6 ? Math.ceil(Math.random() * 3) : 0);
+      n.setAttribute("data-count", v);
+      n.textContent = v.toLocaleString("pt-BR");
+    });
+  }, 2200);
 
   var events = [
     "Link 2 da filial com perda de pacotes. Tráfego movido para o link 1 via SD-WAN.",
