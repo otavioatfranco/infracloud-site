@@ -135,8 +135,6 @@ p { margin: 0; }
 .tech h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 1.75rem; }
 .tech ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .75rem; }
 .tech li { font: 600 1.05rem var(--display); font-stretch: 112%; padding: .7rem 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: 999px; }
-.tech__partners { margin-top: 1.75rem; color: var(--steel); }
-.tech__partners a { color: var(--ink); font-weight: 600; text-decoration-color: var(--signal); text-underline-offset: 3px; }
 
 /* FAQ */
 .faq { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(2rem, 5vw, 4rem); }
