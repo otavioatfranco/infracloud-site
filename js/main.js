@@ -125,7 +125,7 @@
   var events = [
     "Link 2 da filial com perda de pacotes. Tráfego movido para o link 1 via SD-WAN.",
     "Backup imutável da Cloud privada concluído e verificado.",
-    "Uso de CPU acima de 85% na AWS. Instância ajustada automaticamente.",
+    "Uso de CPU acima de 85% na AWS. Capacidade ajustada automaticamente.",
     "Tentativas de login bloqueadas no FortiGate a partir de IP suspeito.",
     "Atualizações de segurança aplicadas no Azure fora do expediente."
   ];
