@@ -19,6 +19,9 @@
   var themed = Array.prototype.slice.call(document.querySelectorAll("[data-theme]"));
   var shift = document.querySelector(".sec--shift");
   var ticking = false;
+  var spy = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]')).map(function (a) {
+    return { link: a, sec: document.querySelector(a.getAttribute("href")) };
+  }).filter(function (s) { return s.sec; });
   function onScroll() {
     ticking = false;
     var y = window.scrollY, vh = window.innerHeight;
@@ -33,6 +36,14 @@
     }
     top.classList.toggle("is-dark", theme === "dark");
     top.classList.toggle("is-solid", theme !== "dark" && y > 40);
+
+    // menu marca a seção atual
+    var cur = null;
+    for (var k = 0; k < spy.length; k++) {
+      var sr = spy[k].sec.getBoundingClientRect();
+      if (sr.top <= vh * 0.35 && sr.bottom > vh * 0.35) cur = spy[k].link;
+    }
+    spy.forEach(function (s) { s.link.classList.toggle("is-current", s.link === cur); });
 
     // a seção "Como trabalhamos" vai do claro ao escuro enquanto entra na tela
     if (shift) {
