@@ -17,6 +17,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Testar conexão com o FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+        run: |
+          for h in "$FTP_HOST" web15f74.uni5.net; do
+            label=$([ "$h" = "$FTP_HOST" ] && echo "FTP_HOST" || echo "host alternativo")
+            ips=$(getent ahosts "$h" | awk '{print $1}' | sort -u | tr '\n' ' ')
+            if [ -z "$ips" ]; then echo "::warning::$label: DNS não resolve"; continue; fi
+            fam=$(echo "$ips" | grep -q ':' && echo "tem IPv6" || echo "só IPv4")
+            if timeout 10 bash -c "</dev/tcp/$h/21" 2>/dev/null; then
+              echo "::notice::$label: porta 21 ABERTA ($fam)"
+            else
+              echo "::warning::$label: porta 21 SEM RESPOSTA ($fam)"
+            fi
+          done
+
       - name: Enviar arquivos por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -24,6 +40,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           server-dir: ${{ secrets.FTP_DIR }}
+          timeout: 60000
           exclude: |
             **/.git*
             **/.git*/**
