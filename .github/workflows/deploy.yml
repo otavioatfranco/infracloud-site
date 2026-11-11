@@ -3,7 +3,6 @@
 #   FTP_HOST  ex.: ftp.infracloud.com.br
 #   FTP_USER  usuário FTP do painel KingHost
 #   FTP_PASS  senha FTP
-#   FTP_DIR   pasta pública do site no FTP, terminando em / (na KingHost normalmente: www/)
 name: Publicar na KingHost
 
 on:
@@ -33,28 +32,15 @@ jobs:
             fi
           done
 
-      - name: Listar pastas do FTP
-        env:
-          H: ${{ secrets.FTP_HOST }}
-          U: ${{ secrets.FTP_USER }}
-          P: ${{ secrets.FTP_PASS }}
-          D: ${{ secrets.FTP_DIR }}
-        run: |
-          echo "::notice::FTP_DIR tem ${#D} caracteres; com espaço: $([[ "$D" =~ [[:space:]] ]] && echo sim || echo não); começa com /: $([[ "$D" == /* ]] && echo sim || echo não)"
-          for path in "" "www/"; do
-            out=$(curl -sS -4 --max-time 30 --list-only --user "$U:$P" "ftp://$H/$path" 2>&1); rc=$?
-            echo "::notice::LIST [${path:-raiz}] rc=$rc :: $(echo "$out" | tr '\r\n' '  ' | sed 's/www/W-W-W/g' | head -c 600)"
-          done
-          out=$(curl -sS -4 --max-time 30 --user "$U:$P" "ftp://$H/" -Q "PWD" --list-only -v 2>&1 | grep -E '^< 2(30|57)|^< 5' | tr '\r\n' '  '); echo "::notice::Servidor: $out"
-
       - name: Enviar arquivos por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          server-dir: ${{ secrets.FTP_DIR }}
+          server-dir: ./
           timeout: 60000
+          log-level: verbose
           exclude: |
             **/.git*
             **/.git*/**
