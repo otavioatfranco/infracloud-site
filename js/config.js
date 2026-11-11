@@ -4,13 +4,13 @@
 // ============================================================
 window.SITE = {
   // WhatsApp só com números: 55 + DDD + número. Ex.: 5518999998888
-  whatsapp: "5500000000000",
+  whatsapp: "5518997600880",
   // Como o telefone aparece escrito no rodapé
-  phone: "(00) 00000-0000",
+  phone: "(18) 99760-0880",
   // Mensagem que já vem digitada quando o cliente abre o WhatsApp
   whatsappMsg: "Olá! Vim pelo site da InfraCloud e gostaria de falar com um especialista.",
   email: "contato@infracloudti.com.br",
-  address: "Rua Exemplo, 000 – Centro, Cidade/SP",
+  address: "" // deixe vazio para esconder do rodapé,
   hours: "Seg a sex, 08:00 às 18:00",
-  cnpj: "CNPJ 00.000.000/0001-00"
+  cnpj: "CNPJ 47.701.088/0001-32"
 };
