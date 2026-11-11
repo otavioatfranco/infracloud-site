@@ -33,6 +33,19 @@ jobs:
             fi
           done
 
+      - name: Listar pastas do FTP
+        env:
+          H: ${{ secrets.FTP_HOST }}
+          U: ${{ secrets.FTP_USER }}
+          P: ${{ secrets.FTP_PASS }}
+          D: ${{ secrets.FTP_DIR }}
+        run: |
+          echo "::notice::FTP_DIR tem ${#D} caracteres; com espaço: $([[ "$D" =~ [[:space:]] ]] && echo sim || echo não); começa com /: $([[ "$D" == /* ]] && echo sim || echo não)"
+          root=$(curl -s -4 --max-time 30 --list-only --user "$U:$P" "ftp://$H/" | tr '\r\n' '  ')
+          echo "::notice::Raiz do FTP: $root"
+          www=$(curl -s -4 --max-time 30 --list-only --user "$U:$P" "ftp://$H/www/" | tr '\r\n' '  ')
+          echo "::notice::Dentro de www/: $www"
+
       - name: Enviar arquivos por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
