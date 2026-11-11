@@ -32,6 +32,16 @@ jobs:
             fi
           done
 
+      - name: Limpeza única (remover depois)
+        env:
+          H: ${{ secrets.FTP_HOST }}
+          U: ${{ secrets.FTP_USER }}
+          P: ${{ secrets.FTP_PASS }}
+        run: |
+          sudo apt-get install -y -qq lftp >/dev/null
+          lftp -u "$U,$P" "$H" -e "set ftp:ssl-allow no; set net:max-retries 2; rm -f index.htm; rm -f phpinfo-cbad2afa.php; rm -r -f www; bye" 2>&1 | sed 's/www/W-W-W/g'
+          echo "::notice::Raiz depois da limpeza: $(lftp -u "$U,$P" "$H" -e "set ftp:ssl-allow no; cls -1; bye" 2>&1 | tr '\n' ' ' | sed 's/www/W-W-W/g')"
+
       - name: Enviar arquivos por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
