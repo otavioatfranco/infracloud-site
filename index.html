@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,500..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -31,6 +31,7 @@
       <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav id="menu" class="nav" aria-label="Principal">
         <a href="#nuvens">Nuvens</a>
+        <a href="#seguranca">Segurança</a>
         <a href="#equipe">Equipe</a>
         <a href="#solucoes">Soluções</a>
         <a href="#como-trabalhamos">Como trabalhamos</a>
@@ -47,7 +48,7 @@
       <div class="wrap hero__in">
         <div class="hero__text">
           <h1>Infraestrutura em nuvem e segurança cibernética para empresas que não podem parar.</h1>
-          <p class="lead">Projetamos, migramos e operamos ambientes em cloud privada, AWS, Azure e Google Cloud, com proteção contra ameaças, backup imutável e monitoramento contínuo.</p>
+          <p class="lead">Projetamos, migramos e operamos ambientes em cloud privada, AWS, Azure e Google Cloud, com segurança, backup imutável e monitoramento contínuo.</p>
           <div class="hero__cta">
             <a class="btn btn--solid" data-mail href="#">Falar com um especialista</a>
             <a class="btn btn--ghost" href="#solucoes">Conhecer as soluções</a>
@@ -82,7 +83,7 @@
         <p><strong>24x7</strong> monitoramento e resposta a incidentes</p>
         <p><strong>Multicloud</strong> arquitetura agnóstica e híbrida</p>
         <p><strong>Imutável</strong> backup resistente a ransomware</p>
-        <p><strong>LGPD</strong> governança e trilhas de auditoria</p>
+        <p><strong>LGPD</strong> dados em território nacional</p>
       </div>
     </section>
 
@@ -171,6 +172,48 @@
       </div>
     </section>
 
+    <!-- SEGURANÇA / FIREWALL -->
+    <section id="seguranca" class="sec sec--fog fw" data-theme="light">
+      <div class="wrap fw__in">
+        <div class="fw__text">
+          <h2>Firewall gerenciado e segurança cibernética</h2>
+          <p>O perímetro é a primeira linha de defesa da sua empresa e de qualquer ambiente em nuvem. Implantamos e operamos firewalls de nova geração Fortinet, com políticas revisadas continuamente por especialistas.</p>
+          <ul class="fw__feats">
+            <li><strong>NGFW com IPS</strong><span>Inspeção de tráfego e bloqueio de intrusões e exploits conhecidos.</span></li>
+            <li><strong>Filtro web e de aplicações</strong><span>Controle de acesso a sites e aplicações por usuário, grupo e horário.</span></li>
+            <li><strong>Antivírus e sandbox</strong><span>Análise de arquivos e bloqueio de malware e ransomware na borda.</span></li>
+            <li><strong>VPN e ZTNA</strong><span>Unidades interligadas e acesso remoto seguro, com MFA.</span></li>
+            <li><strong>SD-WAN</strong><span>Múltiplos links com failover automático e priorização de aplicações críticas.</span></li>
+            <li><strong>Segmentação de rede</strong><span>Isolamento entre setores, servidores, visitantes e dispositivos IoT.</span></li>
+          </ul>
+          <p class="fw__note">Equipamento em comodato, licenças, configuração, atualizações e monitoramento incluídos em uma mensalidade.</p>
+          <div class="hero__cta">
+            <a class="btn btn--solid" data-mail href="#">Solicitar avaliação de segurança</a>
+          </div>
+        </div>
+
+        <figure class="noc fw__panel" aria-label="Exemplo de painel de segurança do firewall">
+          <div class="noc__bar">
+            <span class="noc__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="noc__title">FortiGate · Matriz</span>
+            <span class="noc__live"><b aria-hidden="true"></b>protegido</span>
+          </div>
+          <div class="fw__stats">
+            <div><span class="fw__num" data-count="1284">1.284</span><span class="fw__lbl">ameaças bloqueadas hoje</span></div>
+            <div><span class="fw__num" data-count="37">37</span><span class="fw__lbl">tentativas de intrusão</span></div>
+            <div><span class="fw__num" data-count="412">412</span><span class="fw__lbl">sites maliciosos filtrados</span></div>
+          </div>
+          <ul class="fw__log">
+            <li><span class="noc__time">IPS</span>Exploit bloqueado vindo de IP externo</li>
+            <li><span class="noc__time">AV</span>Anexo com ransomware retido na borda</li>
+            <li><span class="noc__time">WEB</span>Acesso a domínio de phishing negado</li>
+            <li><span class="noc__time">VPN</span>Usuário remoto autenticado com MFA</li>
+          </ul>
+          <figcaption>Painel ilustrativo. Relatórios reais são enviados mensalmente a cada cliente.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- PESSOAS -->
     <section id="equipe" class="sec people" data-theme="light">
       <div class="wrap people__in">
@@ -199,11 +242,21 @@
     <section id="solucoes" class="sec sec--fog" data-theme="light">
       <div class="wrap">
         <header class="sec__head">
-          <h2>Infraestrutura e segurança de ponta a ponta</h2>
+          <h2>Segurança e infraestrutura de ponta a ponta</h2>
           <p>Soluções contratadas individualmente ou de forma integrada, sempre com projeto, implantação e suporte especializado.</p>
         </header>
 
         <ul class="svc">
+          <li>
+            <h3>Firewall gerenciado (NGFW)</h3>
+            <p>Firewalls de nova geração com IPS, filtro web, antivírus, SD-WAN, VPN e ZTNA, operados por especialistas e com equipamento em comodato.</p>
+            <span class="svc__stack">Fortinet, SD-WAN, ZTNA, VPN</span>
+          </li>
+          <li>
+            <h3>Monitoramento e resposta 24x7</h3>
+            <p>Observabilidade de nuvem, links, servidores e aplicações, com detecção de ameaças e tratamento de incidentes antes que afetem a operação.</p>
+            <span class="svc__stack">Zabbix, Grafana, Wazuh (SIEM)</span>
+          </li>
           <li>
             <h3>Migração para a nuvem</h3>
             <p>Migração planejada de servidores e aplicações, com testes, janelas de manutenção controladas e plano de reversão, preservando a continuidade do negócio.</p>
@@ -218,16 +271,6 @@
             <h3>Backup imutável</h3>
             <p>Cópias automatizadas fora do ambiente produtivo, com retenção imutável contra ransomware e testes periódicos de restauração.</p>
             <span class="svc__stack">Veeam, armazenamento imutável</span>
-          </li>
-          <li>
-            <h3>Segurança de perímetro e acesso</h3>
-            <p>Firewalls de nova geração, SD-WAN, VPN entre unidades e acesso remoto seguro (ZTNA), com equipamentos em comodato.</p>
-            <span class="svc__stack">Fortinet, SD-WAN, ZTNA, VPN</span>
-          </li>
-          <li>
-            <h3>Monitoramento e resposta 24x7</h3>
-            <p>Observabilidade de nuvem, links, servidores e aplicações, com detecção de ameaças e tratamento de incidentes antes que afetem a operação.</p>
-            <span class="svc__stack">Zabbix, Grafana, Wazuh (SIEM)</span>
           </li>
           <li>
             <h3>Governança e LGPD</h3>
@@ -280,7 +323,7 @@
       <div class="wrap tech">
         <h2>Tecnologias com que trabalhamos</h2>
         <ul>
-          <li>AWS</li><li>Azure</li><li>Google Cloud</li><li>Cloud privada</li><li>VPS Worldwide</li><li>Fortinet</li><li>Veeam</li><li>Zabbix</li><li>Grafana</li><li>Wazuh</li><li>Microsoft</li><li>Linux</li>
+          <li>Fortinet</li><li>AWS</li><li>Azure</li><li>Google Cloud</li><li>Cloud privada</li><li>VPS Worldwide</li><li>Veeam</li><li>Zabbix</li><li>Grafana</li><li>Wazuh</li><li>Microsoft</li><li>Linux</li>
         </ul>
       </div>
     </section>
@@ -308,7 +351,11 @@
           </details>
           <details>
             <summary>É necessário adquirir o firewall?</summary>
-            <p>Não. O equipamento é fornecido em comodato, com custo incluso na mensalidade.</p>
+            <p>Não. O equipamento é fornecido em comodato, com licenças, configuração e atualizações incluídas na mensalidade.</p>
+          </details>
+          <details>
+            <summary>O firewall protege também o ambiente em nuvem?</summary>
+            <p>Sim. Interligamos a empresa à nuvem por VPN e aplicamos as mesmas políticas de segurança ao tráfego entre unidades, usuários remotos e servidores em nuvem.</p>
           </details>
           <details>
             <summary>Como funciona o diagnóstico?</summary>
@@ -342,6 +389,7 @@
       <div>
         <h3>Soluções</h3>
         <ul>
+          <li><a href="#seguranca">Firewall gerenciado</a></li>
           <li><a href="#nuvens">Cloud privada</a></li>
           <li><a href="#nuvens">AWS, Azure e Google Cloud</a></li>
           <li><a href="#solucoes">Migração para a nuvem</a></li>
@@ -368,7 +416,7 @@
     <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
   </a>
 
-  <script src="js/config.js?v=6"></script>
-  <script src="js/main.js?v=6"></script>
+  <script src="js/config.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
 </body>
 </html>
