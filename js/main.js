@@ -12,11 +12,53 @@
   var ano = document.getElementById("ano");
   if (ano) ano.textContent = new Date().getFullYear();
 
-  // Topo: fica sólido ao rolar
+  // Rolagem: barra de progresso, topo claro/escuro e escurecimento da página
+  document.documentElement.classList.add("js");
   var top = document.querySelector(".topbar");
-  function onScroll() { top.classList.toggle("is-solid", window.scrollY > 40); }
+  var bar = document.querySelector(".progress");
+  var themed = Array.prototype.slice.call(document.querySelectorAll("[data-theme]"));
+  var shift = document.querySelector(".sec--shift");
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.scrollY, vh = window.innerHeight;
+    var max = document.documentElement.scrollHeight - vh;
+    if (bar) bar.style.setProperty("--scroll", max > 0 ? (y / max).toFixed(4) : 0);
+
+    // tema da seção que está embaixo do topo
+    var probe = 36, theme = "light";
+    for (var i = 0; i < themed.length; i++) {
+      var r = themed[i].getBoundingClientRect();
+      if (r.top <= probe && r.bottom > probe) { theme = themed[i].getAttribute("data-theme"); break; }
+    }
+    top.classList.toggle("is-dark", theme === "dark");
+    top.classList.toggle("is-solid", theme !== "dark" && y > 40);
+
+    // a seção "Como trabalhamos" vai do claro ao escuro enquanto entra na tela
+    if (shift) {
+      var t = shift.getBoundingClientRect().top;
+      var p = Math.min(1, Math.max(0, (vh - t) / (vh * 0.6)));
+      shift.style.setProperty("--p", p.toFixed(3));
+    }
+  }
+  function requestTick() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }
   onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", requestTick);
+
+  // Elementos aparecem suavemente ao entrar na tela
+  var targets = document.querySelectorAll(".sec__head, .tabs, .svc li, .steps li, .why dl > div, .tech ul, .faq details, .cta__in, .facts p");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    targets.forEach(function (el) {
+      var sibs = el.parentElement.children, idx = Array.prototype.indexOf.call(sibs, el);
+      if (sibs.length > 1 && el.tagName !== "HEADER") el.style.setProperty("--d", Math.min(idx, 5) * 0.08 + "s");
+      el.classList.add("reveal");
+      io.observe(el);
+    });
+  }
 
   // Menu mobile
   var btn = document.querySelector(".menu-btn");
