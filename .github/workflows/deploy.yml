@@ -3,6 +3,7 @@
 #   FTP_HOST  ex.: ftp.infracloud.com.br
 #   FTP_USER  usuário FTP do painel KingHost
 #   FTP_PASS  senha FTP
+#   FTP_DIR   pasta pública do site no FTP, terminando em / (ex.: www/)
 name: Publicar na KingHost
 
 on:
@@ -32,20 +33,15 @@ jobs:
             fi
           done
 
-      - name: Teste de escrita no FTP
+      - name: Listar raiz do FTP
         continue-on-error: true
         env:
           H: ${{ secrets.FTP_HOST }}
           U: ${{ secrets.FTP_USER }}
           P: ${{ secrets.FTP_PASS }}
         run: |
-          echo ok > teste.txt
-          r1=$(curl -sS -4 --max-time 30 -T teste.txt --user "$U:$P" "ftp://$H/teste.txt" -v 2>&1 | grep -E '^< [0-9]{3}' | tail -4 | tr '\r\n' '  ')
-          echo "::notice::Upload arquivo: $r1"
-          r2=$(curl -sS -4 --max-time 30 --user "$U:$P" "ftp://$H/" -Q "MKD testedir" -v 2>&1 | grep -E '^< [0-9]{3}' | tail -4 | tr '\r\n' '  ')
-          echo "::notice::Criar pasta: $r2"
-          r3=$(curl -sS -4 --max-time 30 --user "$U:$P" "ftp://$H/" -Q "PWD" -v 2>&1 | grep -E '^< 257' | tr '\r\n' '  ')
-          echo "::notice::PWD: $r3"
+          out=$(curl -sS -4 --max-time 30 --list-only --user "$U:$P" "ftp://$H/" 2>&1 | tr '\r\n' '  ' | sed 's/www/W-W-W/g' | head -c 600)
+          echo "::notice::Raiz: $out"
 
       - name: Enviar arquivos por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -53,7 +49,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          server-dir: ./
+          server-dir: ${{ secrets.FTP_DIR }}
           timeout: 60000
           log-level: verbose
           exclude: |
