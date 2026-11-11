@@ -10,7 +10,7 @@ window.SITE = {
   // Mensagem que já vem digitada quando o cliente abre o WhatsApp
   whatsappMsg: "Olá! Vim pelo site da InfraCloud e gostaria de falar com um especialista.",
   email: "contato@infracloudti.com.br",
-  address: "" // deixe vazio para esconder do rodapé,
+  address: "", // deixe vazio para esconder do rodapé
   hours: "Seg a sex, 08:00 às 18:00",
   cnpj: "CNPJ 47.701.088/0001-32"
 };
