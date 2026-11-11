@@ -1,0 +1,31 @@
+# Publica o site na KingHost via FTP sempre que algo entra na branch main.
+# Credenciais ficam em Settings > Secrets and variables > Actions:
+#   FTP_HOST  ex.: ftp.infracloud.com.br
+#   FTP_USER  usuário FTP do painel KingHost
+#   FTP_PASS  senha FTP
+#   FTP_DIR   pasta pública do site no FTP, terminando em / (na KingHost normalmente: www/)
+name: Publicar na KingHost
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # botão "Run workflow" pra publicar manualmente
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enviar arquivos por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: ${{ secrets.FTP_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
