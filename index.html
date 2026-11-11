@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>InfraCloud Tecnologia | Infraestrutura, segurança e nuvem para empresas</title>
-  <meta name="description" content="Firewall gerenciado, backup em nuvem, monitoramento 24x7 e servidores em nuvem para empresas e órgãos públicos. Projeto, implantação e operação contínua.">
+  <title>InfraCloud Tecnologia | Cloud privada, AWS, Azure e Google Cloud gerenciados</title>
+  <meta name="description" content="Cloud privada e nuvem pública gerenciada (AWS, Azure, Google Cloud), migração, backup imutável, firewall e monitoramento 24x7 para empresas e órgãos públicos.">
   <meta name="theme-color" content="#0A1530">
   <meta property="og:title" content="InfraCloud Tecnologia">
-  <meta property="og:description" content="Infraestrutura, segurança e nuvem com operação contínua.">
+  <meta property="og:description" content="Cloud privada e multicloud gerenciada, com segurança e monitoramento 24x7.">
   <meta property="og:image" content="assets/img/logo.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,500..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=202611111001">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,500..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -22,13 +22,14 @@
   <header class="topbar">
     <div class="wrap topbar__in">
       <a href="#" class="brand" aria-label="InfraCloud Tecnologia, início">
-        <img src="assets/img/logo.png" alt="InfraCloud Tecnologia" width="200" height="51">
+        <img class="brand__dark" src="assets/img/logo-white.png" alt="InfraCloud Tecnologia" width="176" height="45">
+        <img class="brand__light" src="assets/img/logo.png" alt="" width="176" height="45">
       </a>
       <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav id="menu" class="nav" aria-label="Principal">
+        <a href="#nuvens">Nuvens</a>
         <a href="#solucoes">Soluções</a>
         <a href="#como-trabalhamos">Como trabalhamos</a>
-        <a href="#tecnologias">Tecnologias</a>
         <a href="#duvidas">Dúvidas</a>
         <a href="#contato">Contato</a>
         <a class="btn btn--solid btn--sm" data-wa href="#">Falar no WhatsApp</a>
@@ -41,84 +42,168 @@
     <section class="hero">
       <div class="wrap hero__in">
         <div class="hero__text">
-          <h1>Sua rede, seus dados e seus servidores funcionando todo dia.</h1>
-          <p class="lead">A InfraCloud projeta, implanta e opera a infraestrutura de TI da sua empresa: firewall, backup, nuvem e monitoramento. Você fala com quem configura.</p>
+          <h1>Sua empresa na nuvem certa, operada por quem entende de rede.</h1>
+          <p class="lead">Cloud privada ou AWS, Azure e Google Cloud gerenciados. A InfraCloud migra, protege e monitora seus servidores 24 horas, com firewall e backup integrados.</p>
           <div class="hero__cta">
             <a class="btn btn--solid" data-mail href="#">Falar com um especialista</a>
-            <a class="btn btn--ghost" href="#solucoes">Ver soluções</a>
+            <a class="btn btn--ghost" href="#nuvens">Comparar nuvens</a>
           </div>
         </div>
 
-        <figure class="topo" aria-label="Diagrama: matriz, filiais, nuvem e backup conectados e monitorados pela InfraCloud">
-          <svg viewBox="0 0 520 420" role="img">
-            <title>Topologia gerenciada pela InfraCloud</title>
-            <g class="topo__links">
-              <path class="l" d="M260 210 L110 90"/>
-              <path class="l" d="M260 210 L420 80"/>
-              <path class="l" d="M260 210 L450 250"/>
-              <path class="l" d="M260 210 L330 360"/>
-              <path class="l" d="M260 210 L90 310"/>
-              <path class="l l--thin" d="M110 90 L420 80"/>
-              <path class="l l--thin" d="M90 310 L330 360"/>
-              <path class="l l--thin" d="M420 80 L450 250"/>
-            </g>
-            <g class="topo__nodes">
-              <g class="n" transform="translate(110 90)"><circle r="14"/><text y="-26">Matriz</text></g>
-              <g class="n" transform="translate(420 80)"><circle r="14"/><text y="-26">Nuvem</text></g>
-              <g class="n" transform="translate(450 250)"><circle r="14"/><text y="34">Backup</text></g>
-              <g class="n" transform="translate(330 360)"><circle r="14"/><text y="36">Filial 2</text></g>
-              <g class="n" transform="translate(90 310)"><circle r="14"/><text y="36">Filial 1</text></g>
-              <g class="n n--core" transform="translate(260 210)"><circle r="30"/><circle class="pulse" r="30"/><text y="5">NOC</text></g>
-            </g>
-          </svg>
-          <figcaption>Firewall em cada ponta, backup fora do site e tudo monitorado 24x7.</figcaption>
+        <!-- Painel ilustrativo de monitoramento -->
+        <figure class="noc" aria-label="Exemplo de painel de monitoramento multicloud">
+          <div class="noc__bar">
+            <span class="noc__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="noc__title">Painel NOC</span>
+            <span class="noc__live"><b aria-hidden="true"></b>ao vivo</span>
+          </div>
+          <table class="noc__table">
+            <thead>
+              <tr><th scope="col">Ambiente</th><th scope="col">Latência</th><th scope="col">Uptime</th><th scope="col">Backup</th></tr>
+            </thead>
+            <tbody>
+              <tr data-base="4"><th scope="row"><i class="ok"></i>Cloud privada</th><td class="lat">4 ms</td><td>99,99%</td><td>há 12 min</td></tr>
+              <tr data-base="18"><th scope="row"><i class="ok"></i>AWS São Paulo</th><td class="lat">18 ms</td><td>99,98%</td><td>há 9 min</td></tr>
+              <tr data-base="22"><th scope="row"><i class="ok"></i>Azure Brazil South</th><td class="lat">22 ms</td><td>99,99%</td><td>há 15 min</td></tr>
+              <tr data-base="25"><th scope="row"><i class="ok"></i>Google Cloud SP</th><td class="lat">25 ms</td><td>99,97%</td><td>há 7 min</td></tr>
+              <tr data-base="11"><th scope="row"><i class="warn"></i>Filial · FortiGate</th><td class="lat">11 ms</td><td>99,95%</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p class="noc__event"><span class="noc__time">08:42</span> <span class="noc__msg">Link 2 da filial com perda de pacotes. Tráfego movido para o link 1 via SD-WAN.</span></p>
+          <figcaption>Painel ilustrativo. Cada cliente recebe o seu, com alertas e relatório mensal.</figcaption>
         </figure>
       </div>
 
       <div class="wrap facts">
-        <p><strong>24x7</strong> monitoramento de links, firewall e servidores</p>
-        <p><strong>Comodato</strong> equipamento incluso no contrato mensal</p>
+        <p><strong>24x7</strong> monitoramento de nuvem, links e firewall</p>
+        <p><strong>Multicloud</strong> cloud privada, AWS, Azure e Google Cloud</p>
+        <p><strong>Imutável</strong> backup protegido contra ransomware</p>
         <p><strong>LGPD</strong> controles e relatórios para auditoria</p>
       </div>
     </section>
 
-    <!-- SOLUÇÕES -->
-    <section id="solucoes" class="sec">
+    <!-- NUVENS (abas) -->
+    <section id="nuvens" class="sec">
       <div class="wrap">
         <header class="sec__head">
-          <h2>Soluções</h2>
+          <h2>Escolha onde cada sistema roda</h2>
+          <p>Não vendemos uma nuvem só. Avaliamos custo, latência e exigências de cada sistema e indicamos a combinação certa, inclusive híbrida.</p>
+        </header>
+
+        <div class="tabs" data-tabs>
+          <div class="tabs__list" role="tablist" aria-label="Tipos de nuvem">
+            <button role="tab" id="t-priv" aria-controls="p-priv" aria-selected="true">Cloud privada</button>
+            <button role="tab" id="t-aws" aria-controls="p-aws" aria-selected="false" tabindex="-1">AWS</button>
+            <button role="tab" id="t-az" aria-controls="p-az" aria-selected="false" tabindex="-1">Azure</button>
+            <button role="tab" id="t-gcp" aria-controls="p-gcp" aria-selected="false" tabindex="-1">Google Cloud</button>
+            <button role="tab" id="t-vps" aria-controls="p-vps" aria-selected="false" tabindex="-1">VPS Worldwide</button>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="p-priv" aria-labelledby="t-priv" tabindex="0">
+            <div>
+              <h3>Cloud privada</h3>
+              <p>Servidores dedicados à sua empresa, em datacenter no Brasil, com custo mensal fixo e sem surpresa na fatura.</p>
+            </div>
+            <ul>
+              <li>Recursos exclusivos, sem dividir máquina com outros clientes</li>
+              <li>Dados em território nacional, alinhado à LGPD</li>
+              <li>Firewall, backup e monitoramento já inclusos</li>
+            </ul>
+            <p class="tabs__fit"><span>Ideal para</span> ERP, banco de dados, sistemas legados e órgãos públicos</p>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="p-aws" aria-labelledby="t-aws" tabindex="0" hidden>
+            <div>
+              <h3>AWS gerenciada</h3>
+              <p>Projetamos e operamos seu ambiente na Amazon Web Services: rede, instâncias, segurança e otimização de custos.</p>
+            </div>
+            <ul>
+              <li>Arquitetura com VPC, VPN site-to-site e alta disponibilidade</li>
+              <li>Revisão mensal de custos e ajuste de instâncias</li>
+              <li>Backup e snapshots com retenção definida</li>
+            </ul>
+            <p class="tabs__fit"><span>Ideal para</span> aplicações web, e-commerce e cargas que variam ao longo do mês</p>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="p-az" aria-labelledby="t-az" tabindex="0" hidden>
+            <div>
+              <h3>Azure gerenciada</h3>
+              <p>A nuvem da Microsoft para quem já usa Windows Server, Active Directory e Microsoft 365.</p>
+            </div>
+            <ul>
+              <li>Migração de servidores Windows e Active Directory</li>
+              <li>Integração com Microsoft 365 e Entra ID</li>
+              <li>Políticas de acesso, MFA e monitoramento</li>
+            </ul>
+            <p class="tabs__fit"><span>Ideal para</span> ambientes Microsoft, escritórios e redes com muitos usuários</p>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="p-gcp" aria-labelledby="t-gcp" tabindex="0" hidden>
+            <div>
+              <h3>Google Cloud gerenciada</h3>
+              <p>Infraestrutura no Google Cloud para sistemas modernos, containers e análise de dados.</p>
+            </div>
+            <ul>
+              <li>Compute Engine, Kubernetes e bancos gerenciados</li>
+              <li>Integração com Google Workspace</li>
+              <li>Rede, firewall e acesso seguro configurados por nós</li>
+            </ul>
+            <p class="tabs__fit"><span>Ideal para</span> aplicações em containers, dados e empresas no Google Workspace</p>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="p-vps" aria-labelledby="t-vps" tabindex="0" hidden>
+            <div>
+              <h3>VPS Worldwide</h3>
+              <p>Servidores virtuais em vários países, para quem precisa de presença internacional com custo baixo.</p>
+            </div>
+            <ul>
+              <li>Escolha da localização mais próxima dos seus usuários</li>
+              <li>Linux ou Windows, com acesso administrativo</li>
+              <li>Hardening, atualizações e monitoramento opcionais</li>
+            </ul>
+            <p class="tabs__fit"><span>Ideal para</span> sites, VPNs, aplicações leves e projetos internacionais</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUÇÕES -->
+    <section id="solucoes" class="sec sec--fog">
+      <div class="wrap">
+        <header class="sec__head">
+          <h2>Tudo o que sua nuvem precisa para não parar</h2>
           <p>Contrate uma frente ou o pacote completo. Tudo entra com projeto, implantação e suporte.</p>
         </header>
 
         <ul class="svc">
           <li>
-            <h3>Firewall gerenciado</h3>
-            <p>Firewall de nova geração na borda, com VPN entre filiais, filtro web, IPS e regras revisadas por nós. Equipamento em comodato.</p>
-            <span class="svc__stack">FortiGate, SD-WAN, VPN IPsec/SSL</span>
+            <h3>Migração para a nuvem</h3>
+            <p>Levamos seus servidores locais para a nuvem com planejamento, testes e janela fora do expediente. Sem perder dados, sem parar a empresa.</p>
+            <span class="svc__stack">Servidores físicos, VMware, Hyper-V</span>
           </li>
           <li>
-            <h3>Backup em nuvem</h3>
-            <p>Cópias automáticas fora da empresa, com retenção imutável contra ransomware e teste de restauração periódico.</p>
+            <h3>Cloud gerenciada</h3>
+            <p>Operação do dia a dia: atualizações, ajustes de capacidade, controle de custos e suporte direto com quem configurou.</p>
+            <span class="svc__stack">Cloud privada, AWS, Azure, Google Cloud</span>
+          </li>
+          <li>
+            <h3>Backup imutável</h3>
+            <p>Cópias automáticas fora do ambiente principal, que nem um ransomware consegue apagar. Testamos a restauração periodicamente.</p>
             <span class="svc__stack">Veeam, armazenamento imutável</span>
           </li>
           <li>
+            <h3>Firewall e acesso seguro</h3>
+            <p>Firewall de nova geração entre a empresa e a nuvem, VPN entre filiais e acesso remoto seguro para quem trabalha fora. Equipamento em comodato.</p>
+            <span class="svc__stack">FortiGate, SD-WAN, VPN IPsec/SSL</span>
+          </li>
+          <li>
             <h3>Monitoramento 24x7</h3>
-            <p>Links, servidores, firewall e serviços acompanhados o tempo todo. Alertas tratados antes de virarem chamado.</p>
+            <p>Nuvem, links, servidores e serviços acompanhados o tempo todo, com alertas tratados antes de virarem chamado.</p>
             <span class="svc__stack">Zabbix, Grafana, Wazuh</span>
           </li>
           <li>
-            <h3>Servidores em nuvem</h3>
-            <p>Máquinas virtuais, migração do servidor local e hospedagem de sistemas com alta disponibilidade.</p>
-            <span class="svc__stack">IaaS, Windows Server, Linux</span>
-          </li>
-          <li>
-            <h3>Rede e Wi-Fi corporativo</h3>
-            <p>Cabeamento, switches, segmentação por VLAN e Wi-Fi gerenciado com rede separada para visitantes.</p>
-            <span class="svc__stack">Switches gerenciáveis, Wi-Fi corporativo</span>
-          </li>
-          <li>
-            <h3>Suporte e governança</h3>
-            <p>Atendimento técnico, inventário, políticas de acesso e documentação para LGPD e auditorias.</p>
+            <h3>Governança e LGPD</h3>
+            <p>Inventário, políticas de acesso, logs e documentação prontos para auditorias, LGPD e licitações.</p>
             <span class="svc__stack">LGPD, ISO 27001 como referência</span>
           </li>
         </ul>
@@ -129,14 +214,14 @@
     <section id="como-trabalhamos" class="sec sec--ink">
       <div class="wrap">
         <header class="sec__head">
-          <h2>Como trabalhamos</h2>
-          <p>Do primeiro diagnóstico à operação do dia a dia, com entregas claras em cada etapa.</p>
+          <h2>Da sala de servidores para a nuvem, em quatro etapas</h2>
+          <p>Cada etapa termina com uma entrega concreta. Você sabe o que está acontecendo o tempo todo.</p>
         </header>
         <ol class="steps">
-          <li><h3>Diagnóstico</h3><p>Levantamos rede, servidores, links e riscos. Você recebe um relatório com prioridades.</p></li>
-          <li><h3>Projeto</h3><p>Desenhamos a solução e a proposta com escopo, prazos e valor mensal fechado.</p></li>
-          <li><h3>Implantação</h3><p>Instalamos e migramos fora do horário crítico, com plano de volta se algo der errado.</p></li>
-          <li><h3>Operação</h3><p>Monitoramos, atualizamos e ajustamos. Todo mês, um relatório do que aconteceu.</p></li>
+          <li><h3>Diagnóstico</h3><p>Levantamos servidores, sistemas, links e riscos.</p><span class="steps__out">Entrega: relatório com prioridades</span></li>
+          <li><h3>Projeto</h3><p>Definimos qual nuvem para cada sistema, com custo mensal previsto.</p><span class="steps__out">Entrega: proposta com escopo fechado</span></li>
+          <li><h3>Migração</h3><p>Movemos fora do horário crítico, com plano de volta se algo der errado.</p><span class="steps__out">Entrega: ambiente no ar e documentado</span></li>
+          <li><h3>Operação</h3><p>Monitoramos, atualizamos e otimizamos custos todo mês.</p><span class="steps__out">Entrega: relatório mensal</span></li>
         </ol>
       </div>
     </section>
@@ -146,20 +231,20 @@
       <div class="wrap why">
         <h2>Por que a InfraCloud</h2>
         <dl>
-          <div><dt>Quem atende é quem configura</dt><dd>Sem central de triagem. O técnico que conhece sua rede resolve o chamado.</dd></div>
-          <div><dt>Sem investimento inicial</dt><dd>Firewall e equipamentos em comodato, pagos dentro da mensalidade.</dd></div>
-          <div><dt>Uma empresa para tudo</dt><dd>Firewall, backup, nuvem e monitoramento integrados, com um único contrato.</dd></div>
+          <div><dt>Nuvem com cabeça de rede</dt><dd>Firewall, VPN e links fazem parte do projeto desde o início, não depois do problema.</dd></div>
+          <div><dt>Quem atende é quem configura</dt><dd>Sem central de triagem. O técnico que conhece seu ambiente resolve o chamado.</dd></div>
+          <div><dt>Custo previsível</dt><dd>Mensalidade fechada e revisão de consumo para a fatura da nuvem não crescer sozinha.</dd></div>
           <div><dt>Experiência com setor público</dt><dd>Atendemos prefeituras e órgãos públicos, com documentação pronta para licitações.</dd></div>
         </dl>
       </div>
     </section>
 
     <!-- TECNOLOGIAS -->
-    <section id="tecnologias" class="sec sec--fog">
+    <section id="tecnologias" class="sec sec--fog sec--tight">
       <div class="wrap tech">
         <h2>Tecnologias com que trabalhamos</h2>
         <ul>
-          <li>Fortinet</li><li>Veeam</li><li>Zabbix</li><li>Grafana</li><li>Wazuh</li><li>Microsoft</li><li>Linux</li><li>Cloud privada</li><li>AWS</li><li>Azure</li><li>Google Cloud</li><li>VPS Worldwide</li>
+          <li>AWS</li><li>Azure</li><li>Google Cloud</li><li>Cloud privada</li><li>VPS Worldwide</li><li>Fortinet</li><li>Veeam</li><li>Zabbix</li><li>Grafana</li><li>Wazuh</li><li>Microsoft</li><li>Linux</li>
         </ul>
       </div>
     </section>
@@ -170,20 +255,24 @@
         <h2>Dúvidas frequentes</h2>
         <div class="faq__list">
           <details>
-            <summary>Preciso comprar o firewall?</summary>
-            <p>Não. O equipamento vai em comodato e o custo está incluso na mensalidade. Se preferir comprar, também fazemos o projeto e a gestão.</p>
+            <summary>Cloud privada ou nuvem pública: qual é melhor?</summary>
+            <p>Depende do sistema. Cargas estáveis, como ERP e banco de dados, costumam sair mais baratas na cloud privada. Aplicações que variam muito aproveitam melhor AWS, Azure ou Google Cloud. No diagnóstico indicamos a melhor combinação.</p>
           </details>
           <details>
-            <summary>Vocês atendem fora de horário?</summary>
-            <p>O monitoramento é 24x7. Incidentes críticos são tratados a qualquer hora; demandas comuns seguem o horário comercial.</p>
-          </details>
-          <details>
-            <summary>Atendem empresas de outras cidades?</summary>
-            <p>Sim. A maior parte da operação é remota. Visitas presenciais são agendadas conforme o contrato.</p>
+            <summary>A conta da nuvem pode sair do controle?</summary>
+            <p>Na cloud privada o valor é fixo. Na nuvem pública configuramos alertas de orçamento e revisamos o consumo todo mês para cortar o que não é usado.</p>
           </details>
           <details>
             <summary>Dá para migrar sem parar a empresa?</summary>
             <p>Sim. Planejamos a migração em janelas fora do expediente e mantemos o ambiente antigo pronto para voltar, se necessário.</p>
+          </details>
+          <details>
+            <summary>Meus dados ficam no Brasil?</summary>
+            <p>Na cloud privada, sim. Na nuvem pública usamos as regiões brasileiras da AWS, Azure e Google Cloud sempre que o sistema exigir.</p>
+          </details>
+          <details>
+            <summary>Preciso comprar o firewall?</summary>
+            <p>Não. O equipamento vai em comodato e o custo está incluso na mensalidade.</p>
           </details>
           <details>
             <summary>Como funciona o diagnóstico?</summary>
@@ -197,12 +286,12 @@
     <section id="contato" class="cta">
       <div class="wrap cta__in">
         <div>
-          <h2>Peça um diagnóstico gratuito da sua rede</h2>
-          <p>Conte rapidamente como é seu ambiente hoje. Retornamos no mesmo dia útil.</p>
+          <h2>Descubra quanto sua empresa economiza na nuvem certa</h2>
+          <p>Diagnóstico gratuito do seu ambiente, com estimativa de custo mensal. Retornamos no mesmo dia útil.</p>
         </div>
         <div class="cta__actions">
-          <a class="btn btn--solid" data-wa href="#">Chamar no WhatsApp</a>
-          <a class="btn btn--line" data-mail href="#">Enviar e-mail</a>
+          <a class="btn btn--light" data-mail href="#">Falar com um especialista</a>
+          <a class="btn btn--line" data-wa href="#">Chamar no WhatsApp</a>
         </div>
       </div>
     </section>
@@ -212,15 +301,16 @@
     <div class="wrap foot__in">
       <div class="foot__brand">
         <img src="assets/img/logo-white.png" alt="InfraCloud Tecnologia" width="180" height="46">
-        <p>Infraestrutura, segurança e nuvem com operação contínua.</p>
+        <p>Cloud privada e multicloud gerenciada, com segurança e monitoramento 24x7.</p>
       </div>
       <div>
         <h3>Soluções</h3>
         <ul>
-          <li><a href="#solucoes">Firewall gerenciado</a></li>
-          <li><a href="#solucoes">Backup em nuvem</a></li>
+          <li><a href="#nuvens">Cloud privada</a></li>
+          <li><a href="#nuvens">AWS, Azure e Google Cloud</a></li>
+          <li><a href="#solucoes">Migração para a nuvem</a></li>
+          <li><a href="#solucoes">Backup imutável</a></li>
           <li><a href="#solucoes">Monitoramento 24x7</a></li>
-          <li><a href="#solucoes">Servidores em nuvem</a></li>
         </ul>
       </div>
       <div>
@@ -238,7 +328,11 @@
     </div>
   </footer>
 
-  <script src="js/config.js?v=202611111001"></script>
-  <script src="js/main.js?v=202611111001"></script>
+  <a class="wa-float" data-wa href="#" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+  </a>
+
+  <script src="js/config.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>
